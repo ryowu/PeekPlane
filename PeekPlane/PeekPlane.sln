@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCServer", "PCServer\PCServer.csproj", "{2368DFE4-48D1-482D-9445-B5F95FEF5424}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCClient", "PCClient\PCClient.csproj", "{8B8BEBD1-A182-450D-B4EF-DE2E4820D4F8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2368DFE4-48D1-482D-9445-B5F95FEF5424}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2368DFE4-48D1-482D-9445-B5F95FEF5424}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2368DFE4-48D1-482D-9445-B5F95FEF5424}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2368DFE4-48D1-482D-9445-B5F95FEF5424}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B8BEBD1-A182-450D-B4EF-DE2E4820D4F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B8BEBD1-A182-450D-B4EF-DE2E4820D4F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B8BEBD1-A182-450D-B4EF-DE2E4820D4F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B8BEBD1-A182-450D-B4EF-DE2E4820D4F8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
