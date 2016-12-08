@@ -7,8 +7,8 @@
     <ProjectGuid>{8B8BEBD1-A182-450D-B4EF-DE2E4820D4F8}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WinFormsClient</RootNamespace>
-    <AssemblyName>WinFormsClient</AssemblyName>
+    <RootNamespace>PeekPlane</RootNamespace>
+    <AssemblyName>PeekPlane</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>main.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.AspNet.SignalR.Client, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -68,6 +71,7 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="PaintStyles.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Block.resx">
@@ -101,10 +105,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\1481172775_435533.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\images.jpg" />
+    <None Include="Resources\title.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\playername.png" />
@@ -116,7 +117,7 @@
     <None Include="Resources\flyingplane.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\cloud_bg.jpg" />
+    <Content Include="main.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

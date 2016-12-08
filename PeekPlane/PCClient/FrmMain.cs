@@ -23,7 +23,7 @@ namespace WinFormsClient
 		/// </summary>
 		private String UserName { get; set; }
 		private IHubProxy HubProxy { get; set; }
-		const string ServerURI = "http://localhost:8080/signalr";
+		const string ServerURI = "http://WCNRW186023-5EH:8080/signalr";
 		private HubConnection Connection { get; set; }
 
 		private bool isValidSelection = false;
@@ -31,6 +31,9 @@ namespace WinFormsClient
 		private int tableId = -1;
 		private List<Block> blocksMine = new List<Block>();
 		private List<Block> blocksEnemy = new List<Block>();
+		private List<int> map = new List<int>();
+		private int plane_count = 0;
+		private PlaneStyle currentPaintStyle = PlaneStyle.Up;
 		#endregion
 
 		internal FrmMain()
@@ -56,7 +59,7 @@ namespace WinFormsClient
 					blocksMine.Add(newBlock);
 					pnlAreaMine.Controls.Add(newBlock);
 					newBlock.MouseEnter += item_MouseEnterMine;
-					newBlock.Click += item_Click;
+					newBlock.MouseUp += newBlock_MouseUp;
 					newBlock.Width = Consts.BLOCK_WIDTH;
 					newBlock.Height = Consts.BLOCK_HEIGHT;
 					blocksMine[blockIndex].Left = (Consts.BLOCK_WIDTH + 1) * i;
@@ -93,29 +96,12 @@ namespace WinFormsClient
 		private bool PaintStyle(PlaneStyle s, Point currentPos, bool valid)
 		{
 			int paintedBlocks = 0;
-			Color c = valid ? Color.LightBlue : Color.Red;
-
-			switch (s)
+			Color c = valid ? Consts.COLOR_VALID_SELECTION : Consts.COLOR_INVALID_SELECTION;
+			List<Point> styleDesign = PaintStyles.GetStyle(s);
+			styleDesign.ForEach((style) =>
 			{
-				case PlaneStyle.NormalUp:
-					{
-						paintedBlocks += SetBlockColor(currentPos, c);
-						paintedBlocks += SetBlockColor(new Point(currentPos.X - 1, currentPos.Y), c);
-						paintedBlocks += SetBlockColor(new Point(currentPos.X - 2, currentPos.Y), c);
-						paintedBlocks += SetBlockColor(new Point(currentPos.X + 1, currentPos.Y), c);
-						paintedBlocks += SetBlockColor(new Point(currentPos.X + 2, currentPos.Y), c);
-
-						paintedBlocks += SetBlockColor(new Point(currentPos.X, currentPos.Y - 1), c);
-
-						paintedBlocks += SetBlockColor(new Point(currentPos.X, currentPos.Y + 1), c);
-						paintedBlocks += SetBlockColor(new Point(currentPos.X, currentPos.Y + 2), c);
-
-						paintedBlocks += SetBlockColor(new Point(currentPos.X, currentPos.Y + 3), c);
-						paintedBlocks += SetBlockColor(new Point(currentPos.X - 1, currentPos.Y + 3), c);
-						paintedBlocks += SetBlockColor(new Point(currentPos.X + 1, currentPos.Y + 3), c);
-						break;
-					}
-			}
+				paintedBlocks += SetBlockColor(new Point(currentPos.X + style.X, currentPos.Y + style.Y), c);
+			});
 
 			if (paintedBlocks < 11 && valid)
 				PaintStyle(s, currentPos, false);
@@ -128,9 +114,13 @@ namespace WinFormsClient
 			if (p.X >= 0 && p.Y >= 0 && p.X < Consts.ROW_COUNT && p.Y < Consts.COLUMN_COUNT)
 			{
 				//blocks
-				blocksMine[p.X + p.Y * Consts.ROW_COUNT].BackColor = c;
-				blocksMine[p.X + p.Y * Consts.COLUMN_COUNT].State = BlockState.Selected;
-				return 1;
+				int index = PointToIndex(p);
+				if (blocksMine[index].State != BlockState.Selected)
+				{
+					blocksMine[index].BackColor = c;
+					blocksMine[index].State = BlockState.Preview;
+					return 1;
+				}
 			}
 			return 0;
 		}
@@ -178,11 +168,25 @@ namespace WinFormsClient
 			}
 		}
 
+		private void RestoreUnselectedBlocks()
+		{
+			////clear
+			blocksMine.ForEach((b) =>
+			{
+				if (b.State != BlockState.Selected)
+				{
+					b.BackColor = Color.FromKnownColor(KnownColor.White);
+					b.State = BlockState.Raw;
+				}
+			});
+		}
+
 		private bool IfWin()
 		{
-			int myHP = 11;
-			int enemyHP = 11;
-			blocksMine.ForEach((b) => {
+			int myHP = 11 * Consts.PLANE_COUNT;
+			int enemyHP = 11 * Consts.PLANE_COUNT;
+			blocksMine.ForEach((b) =>
+			{
 				if (b.State == BlockState.BrokenWithTarget)
 					myHP--;
 			});
@@ -198,6 +202,8 @@ namespace WinFormsClient
 				pnlBattleAreaEnemy.Enabled = false;
 				lblGameover.Text = "YOU LOSE!";
 				lblGameover.Visible = true;
+				btnAgain.Visible = true;
+				btnGotoHall.Visible = true;
 				return false;
 			}
 			else if (enemyHP <= 0)
@@ -205,9 +211,22 @@ namespace WinFormsClient
 				pnlBattleAreaEnemy.Enabled = false;
 				lblGameover.Text = "YOU WIN!";
 				lblGameover.Visible = true;
+				btnAgain.Visible = true;
+				btnGotoHall.Visible = true;
 				return true;
 			}
 			return false;
+		}
+
+		private void ShowPanel(Panel p)
+		{
+			//hide all panels
+			pnlBattleField.Visible = false;
+			pnlSignin.Visible = false;
+			pnlLoading.Visible = false;
+
+			p.Dock = DockStyle.Fill;
+			p.Visible = true;
 		}
 
 		#region Signalr methods invoked by server
@@ -219,6 +238,9 @@ namespace WinFormsClient
 				lblEnemyName.Text = enemyName;
 				lblTurnText.Text = "Set your plane";
 				lblMyName.Text = txtPlayerName.Text.Trim();
+				plane_count = Consts.PLANE_COUNT;
+				btnAgain.Visible = false;
+				btnGotoHall.Visible = false;
 				ShowPanel(pnlBattleField);
 			}));
 		}
@@ -264,16 +286,6 @@ namespace WinFormsClient
 
 		#endregion
 
-		private void ShowPanel(Panel p)
-		{
-			//hide all panels
-			pnlBattleField.Visible = false;
-			pnlSignin.Visible = false;
-			pnlLoading.Visible = false;
-
-			p.Dock = DockStyle.Fill;
-			p.Visible = true;
-		}
 		#endregion
 
 		#region Events
@@ -360,24 +372,6 @@ namespace WinFormsClient
 			}
 		}
 
-		void item_Click(object sender, EventArgs e)
-		{
-			if (isValidSelection)
-			{
-				blocksMine.ForEach((b) =>
-				{
-					b.MouseEnter -= item_MouseEnterMine;
-					b.Click -= item_Click;
-				});
-
-				//Sync my plane map to server, it is the safer strategy, for now just calculate in client side
-				//so send map to each other
-				List<int> map = new List<int>();
-				blocksMine.ForEach((b) => { map.Add((int)b.State); });
-				HubProxy.Invoke("SyncMap", map, tableId);
-			}
-		}
-
 		void item_MouseEnterEnemy(object sender, EventArgs e)
 		{
 			((Block)sender).BorderStyle = BorderStyle.Fixed3D;
@@ -390,19 +384,82 @@ namespace WinFormsClient
 
 		void item_MouseEnterMine(object sender, EventArgs e)
 		{
-			//clear
+			RestoreUnselectedBlocks();
+			Point currentPos = ((Block)sender).Pos;
+			isValidSelection = PaintStyle(currentPaintStyle, currentPos, true);
+		}
+
+		void newBlock_MouseUp(object sender, MouseEventArgs e)
+		{
+			if (e.Button == System.Windows.Forms.MouseButtons.Right)
+			{
+				//refresh all blocks
+				RestoreUnselectedBlocks();
+				//change style to next style
+				int currentStyleNumber = (int)currentPaintStyle;
+				currentStyleNumber++;
+				if (currentStyleNumber > 4)
+					currentStyleNumber = 1;
+				currentPaintStyle = (PlaneStyle)currentStyleNumber;
+				//repaint current block
+				item_MouseEnterMine(sender, e);
+			}
+			else if (e.Button == System.Windows.Forms.MouseButtons.Left)
+			{
+				if (isValidSelection)
+				{
+					plane_count--;
+					blocksMine.ForEach((b) =>
+					{
+						if (b.State == BlockState.Preview)
+						{
+							b.State = BlockState.Selected;
+							b.MouseEnter -= item_MouseEnterMine;
+							b.MouseUp -= newBlock_MouseUp;
+						}
+					});
+
+
+					if (plane_count == 0)
+					{
+						blocksMine.ForEach((b) =>
+						{
+							b.MouseEnter -= item_MouseEnterMine;
+							b.MouseUp -= newBlock_MouseUp;
+						});
+
+						map.Clear();
+						blocksMine.ForEach((b) => { map.Add((int)b.State); });
+						HubProxy.Invoke("SyncMap", map, tableId);
+					}
+				}
+			}
+		}
+
+		private void btnAgain_Click(object sender, EventArgs e)
+		{
+			btnAgain.Visible = false;
+			btnGotoHall.Visible = false;
+			lblGameover.Visible = false;
+			lblTurnText.Text = "Set your plane";
+			plane_count = Consts.PLANE_COUNT;
+
 			blocksMine.ForEach((b) =>
 			{
-				b.BackColor = Color.FromKnownColor(KnownColor.Control);
 				b.State = BlockState.Raw;
+				b.MouseEnter += item_MouseEnterMine;
+				b.MouseUp += newBlock_MouseUp;
 			});
 
-			//set color
-			//get current index
-			Point currentPos = ((Block)sender).Pos;
+			RestoreUnselectedBlocks();
 
-			isValidSelection = PaintStyle(PlaneStyle.NormalUp, currentPos, true);
+			blocksEnemy.ForEach((b) =>
+			{
+				b.State = BlockState.Raw;
+				b.BackColor = Color.White;
+			});
 
+			pnlBattleAreaEnemy.Enabled = false;
 		}
 		#endregion
 	}

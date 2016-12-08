@@ -42,11 +42,13 @@
 			this.lblEnemyName = new System.Windows.Forms.Label();
 			this.lblMyName = new System.Windows.Forms.Label();
 			this.lblTurnText = new System.Windows.Forms.Label();
+			this.pnlAreaMine = new System.Windows.Forms.Panel();
+			this.pnlBattleAreaEnemy = new System.Windows.Forms.Panel();
 			this.pnlLoading = new System.Windows.Forms.Panel();
 			this.label1 = new System.Windows.Forms.Label();
 			this.lblProgressbar = new System.Windows.Forms.Label();
-			this.pnlAreaMine = new System.Windows.Forms.Panel();
-			this.pnlBattleAreaEnemy = new System.Windows.Forms.Panel();
+			this.btnAgain = new System.Windows.Forms.Button();
+			this.btnGotoHall = new System.Windows.Forms.Button();
 			this.picPlaneProgress = new System.Windows.Forms.PictureBox();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -165,6 +167,8 @@
 			// pnlBattleField
 			// 
 			this.pnlBattleField.BackColor = System.Drawing.Color.White;
+			this.pnlBattleField.Controls.Add(this.btnGotoHall);
+			this.pnlBattleField.Controls.Add(this.btnAgain);
 			this.pnlBattleField.Controls.Add(this.lblGameover);
 			this.pnlBattleField.Controls.Add(this.lblEnemyName);
 			this.pnlBattleField.Controls.Add(this.lblMyName);
@@ -221,6 +225,26 @@
 			this.lblTurnText.Text = "Set your plane";
 			this.lblTurnText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
+			// pnlAreaMine
+			// 
+			this.pnlAreaMine.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.pnlAreaMine.Location = new System.Drawing.Point(10, 42);
+			this.pnlAreaMine.Margin = new System.Windows.Forms.Padding(4);
+			this.pnlAreaMine.Name = "pnlAreaMine";
+			this.pnlAreaMine.Size = new System.Drawing.Size(440, 440);
+			this.pnlAreaMine.TabIndex = 70;
+			// 
+			// pnlBattleAreaEnemy
+			// 
+			this.pnlBattleAreaEnemy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.pnlBattleAreaEnemy.Enabled = false;
+			this.pnlBattleAreaEnemy.Location = new System.Drawing.Point(471, 42);
+			this.pnlBattleAreaEnemy.Margin = new System.Windows.Forms.Padding(4);
+			this.pnlBattleAreaEnemy.Name = "pnlBattleAreaEnemy";
+			this.pnlBattleAreaEnemy.Size = new System.Drawing.Size(440, 440);
+			this.pnlBattleAreaEnemy.TabIndex = 71;
+			this.pnlBattleAreaEnemy.Visible = false;
+			// 
 			// pnlLoading
 			// 
 			this.pnlLoading.BackColor = System.Drawing.Color.White;
@@ -258,25 +282,26 @@
 			this.lblProgressbar.TabIndex = 2;
 			this.lblProgressbar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// pnlAreaMine
+			// btnAgain
 			// 
-			this.pnlAreaMine.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pnlAreaMine.Location = new System.Drawing.Point(10, 42);
-			this.pnlAreaMine.Margin = new System.Windows.Forms.Padding(4);
-			this.pnlAreaMine.Name = "pnlAreaMine";
-			this.pnlAreaMine.Size = new System.Drawing.Size(440, 440);
-			this.pnlAreaMine.TabIndex = 70;
+			this.btnAgain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnAgain.Location = new System.Drawing.Point(619, 489);
+			this.btnAgain.Name = "btnAgain";
+			this.btnAgain.Size = new System.Drawing.Size(99, 44);
+			this.btnAgain.TabIndex = 75;
+			this.btnAgain.Text = "AGAIN";
+			this.btnAgain.UseVisualStyleBackColor = true;
+			this.btnAgain.Click += new System.EventHandler(this.btnAgain_Click);
 			// 
-			// pnlBattleAreaEnemy
+			// btnGotoHall
 			// 
-			this.pnlBattleAreaEnemy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pnlBattleAreaEnemy.Enabled = false;
-			this.pnlBattleAreaEnemy.Location = new System.Drawing.Point(471, 42);
-			this.pnlBattleAreaEnemy.Margin = new System.Windows.Forms.Padding(4);
-			this.pnlBattleAreaEnemy.Name = "pnlBattleAreaEnemy";
-			this.pnlBattleAreaEnemy.Size = new System.Drawing.Size(440, 440);
-			this.pnlBattleAreaEnemy.TabIndex = 71;
-			this.pnlBattleAreaEnemy.Visible = false;
+			this.btnGotoHall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnGotoHall.Location = new System.Drawing.Point(724, 489);
+			this.btnGotoHall.Name = "btnGotoHall";
+			this.btnGotoHall.Size = new System.Drawing.Size(99, 44);
+			this.btnGotoHall.TabIndex = 76;
+			this.btnGotoHall.Text = "GOTO HALL";
+			this.btnGotoHall.UseVisualStyleBackColor = true;
 			// 
 			// picPlaneProgress
 			// 
@@ -290,7 +315,7 @@
 			// 
 			// pictureBox1
 			// 
-			this.pictureBox1.Image = global::WinFormsClient.Properties.Resources.title;
+			this.pictureBox1.Image = global::PeekPlane.Properties.Resources.title;
 			this.pictureBox1.Location = new System.Drawing.Point(259, 112);
 			this.pictureBox1.Name = "pictureBox1";
 			this.pictureBox1.Size = new System.Drawing.Size(420, 111);
@@ -299,7 +324,7 @@
 			// 
 			// pictureBox3
 			// 
-			this.pictureBox3.Image = global::WinFormsClient.Properties.Resources.table;
+			this.pictureBox3.Image = global::PeekPlane.Properties.Resources.table;
 			this.pictureBox3.Location = new System.Drawing.Point(166, 19);
 			this.pictureBox3.Name = "pictureBox3";
 			this.pictureBox3.Size = new System.Drawing.Size(134, 61);
@@ -308,7 +333,7 @@
 			// 
 			// pictureBox2
 			// 
-			this.pictureBox2.Image = global::WinFormsClient.Properties.Resources.playername;
+			this.pictureBox2.Image = global::PeekPlane.Properties.Resources.playername;
 			this.pictureBox2.Location = new System.Drawing.Point(33, 24);
 			this.pictureBox2.Name = "pictureBox2";
 			this.pictureBox2.Size = new System.Drawing.Size(267, 61);
@@ -326,6 +351,7 @@
 			this.Controls.Add(this.pnlSignin);
 			this.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Margin = new System.Windows.Forms.Padding(4);
 			this.MaximizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(300, 300);
@@ -374,6 +400,8 @@
 		private System.Windows.Forms.PictureBox pictureBox2;
 		private System.Windows.Forms.PictureBox pictureBox3;
 		private System.Windows.Forms.PictureBox picPlaneProgress;
+		private System.Windows.Forms.Button btnGotoHall;
+		private System.Windows.Forms.Button btnAgain;
 
     }
 }

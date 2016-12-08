@@ -20,7 +20,7 @@ namespace SignalRChat
     public partial class WinFormsServer : Form
     {
         private IDisposable SignalR { get; set; }
-        const string ServerURI = "http://localhost:8080";
+		const string ServerURI = "http://WCNRW186023-5EH:8080";
 
         internal WinFormsServer()
         {

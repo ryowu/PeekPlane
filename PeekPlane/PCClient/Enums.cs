@@ -8,7 +8,10 @@ namespace WinFormsClient
 {
 	public enum PlaneStyle
 	{
- 		NormalUp
+ 		Up = 1,
+		Right = 2,
+		Down = 3,
+		Left = 4
 	}
 
 	public enum BlockState
@@ -16,6 +19,7 @@ namespace WinFormsClient
  		Raw,
 		Selected,
 		BrokenWithoutTarget,
-		BrokenWithTarget
+		BrokenWithTarget,
+		Preview
 	}
 }
