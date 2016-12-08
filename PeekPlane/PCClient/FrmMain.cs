@@ -315,12 +315,15 @@ namespace WinFormsClient
 		{
 			ShowPanel(pnlLoading);
 			InitBlocks();
+			Thread.Sleep(1000);
 			ShowPanel(pnlSignin);
 		}
 
 		private void btnGo_Click(object sender, EventArgs e)
 		{
 			btnGo.Enabled = false;
+			numTableId.Enabled = false;
+			btnGo.Text = "Waiting for another player";
 			tableId = Convert.ToInt32(numTableId.Value);
 			HubProxy.Invoke("SignIn", txtPlayerName.Text, tableId);
 		}

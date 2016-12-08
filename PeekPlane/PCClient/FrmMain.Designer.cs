@@ -30,12 +30,10 @@
         {
 			this.pnlSignin = new System.Windows.Forms.Panel();
 			this.pnlChooseTableArea = new System.Windows.Forms.Panel();
-			this.label2 = new System.Windows.Forms.Label();
 			this.numTableId = new System.Windows.Forms.NumericUpDown();
 			this.btnGo = new System.Windows.Forms.Button();
 			this.pnlPlayerNameArea = new System.Windows.Forms.Panel();
 			this.lblLoginResult = new System.Windows.Forms.Label();
-			this.lblName = new System.Windows.Forms.Label();
 			this.txtPlayerName = new System.Windows.Forms.TextBox();
 			this.SignInButton = new System.Windows.Forms.Button();
 			this.pnlAreaMine = new System.Windows.Forms.Panel();
@@ -48,12 +46,18 @@
 			this.pnlLoading = new System.Windows.Forms.Panel();
 			this.label1 = new System.Windows.Forms.Label();
 			this.lblProgressbar = new System.Windows.Forms.Label();
+			this.pictureBox3 = new System.Windows.Forms.PictureBox();
+			this.pictureBox2 = new System.Windows.Forms.PictureBox();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.pnlSignin.SuspendLayout();
 			this.pnlChooseTableArea.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numTableId)).BeginInit();
 			this.pnlPlayerNameArea.SuspendLayout();
 			this.pnlBattleField.SuspendLayout();
 			this.pnlLoading.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// pnlSignin
@@ -69,30 +73,22 @@
 			// 
 			// pnlChooseTableArea
 			// 
-			this.pnlChooseTableArea.Controls.Add(this.label2);
+			this.pnlChooseTableArea.BackColor = System.Drawing.Color.Cornsilk;
+			this.pnlChooseTableArea.Controls.Add(this.pictureBox3);
 			this.pnlChooseTableArea.Controls.Add(this.numTableId);
 			this.pnlChooseTableArea.Controls.Add(this.btnGo);
-			this.pnlChooseTableArea.Location = new System.Drawing.Point(298, 345);
+			this.pnlChooseTableArea.Location = new System.Drawing.Point(161, 345);
 			this.pnlChooseTableArea.Name = "pnlChooseTableArea";
-			this.pnlChooseTableArea.Size = new System.Drawing.Size(318, 129);
+			this.pnlChooseTableArea.Size = new System.Drawing.Size(618, 129);
 			this.pnlChooseTableArea.TabIndex = 10;
 			this.pnlChooseTableArea.Visible = false;
 			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(16, 20);
-			this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(44, 19);
-			this.label2.TabIndex = 6;
-			this.label2.Text = "Table:";
-			// 
 			// numTableId
 			// 
-			this.numTableId.Location = new System.Drawing.Point(100, 18);
+			this.numTableId.Font = new System.Drawing.Font("Microsoft YaHei", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.numTableId.Location = new System.Drawing.Point(307, 28);
 			this.numTableId.Name = "numTableId";
-			this.numTableId.Size = new System.Drawing.Size(200, 25);
+			this.numTableId.Size = new System.Drawing.Size(200, 43);
 			this.numTableId.TabIndex = 7;
 			this.numTableId.Value = new decimal(new int[] {
             1,
@@ -102,7 +98,7 @@
 			// 
 			// btnGo
 			// 
-			this.btnGo.Location = new System.Drawing.Point(101, 52);
+			this.btnGo.Location = new System.Drawing.Point(306, 77);
 			this.btnGo.Name = "btnGo";
 			this.btnGo.Size = new System.Drawing.Size(199, 34);
 			this.btnGo.TabIndex = 8;
@@ -112,47 +108,40 @@
 			// 
 			// pnlPlayerNameArea
 			// 
+			this.pnlPlayerNameArea.BackColor = System.Drawing.Color.Cornsilk;
+			this.pnlPlayerNameArea.Controls.Add(this.pictureBox2);
 			this.pnlPlayerNameArea.Controls.Add(this.lblLoginResult);
-			this.pnlPlayerNameArea.Controls.Add(this.lblName);
 			this.pnlPlayerNameArea.Controls.Add(this.txtPlayerName);
 			this.pnlPlayerNameArea.Controls.Add(this.SignInButton);
-			this.pnlPlayerNameArea.Location = new System.Drawing.Point(298, 205);
+			this.pnlPlayerNameArea.Location = new System.Drawing.Point(161, 205);
 			this.pnlPlayerNameArea.Name = "pnlPlayerNameArea";
-			this.pnlPlayerNameArea.Size = new System.Drawing.Size(318, 125);
+			this.pnlPlayerNameArea.Size = new System.Drawing.Size(618, 125);
 			this.pnlPlayerNameArea.TabIndex = 9;
 			// 
 			// lblLoginResult
 			// 
 			this.lblLoginResult.AutoSize = true;
-			this.lblLoginResult.Location = new System.Drawing.Point(99, 92);
+			this.lblLoginResult.Location = new System.Drawing.Point(162, 92);
 			this.lblLoginResult.Name = "lblLoginResult";
 			this.lblLoginResult.Size = new System.Drawing.Size(29, 19);
 			this.lblLoginResult.TabIndex = 6;
 			this.lblLoginResult.Text = "     ";
 			// 
-			// lblName
-			// 
-			this.lblName.AutoSize = true;
-			this.lblName.Location = new System.Drawing.Point(7, 21);
-			this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.lblName.Name = "lblName";
-			this.lblName.Size = new System.Drawing.Size(87, 19);
-			this.lblName.TabIndex = 3;
-			this.lblName.Text = "Player name:";
-			// 
 			// txtPlayerName
 			// 
-			this.txtPlayerName.Location = new System.Drawing.Point(102, 18);
+			this.txtPlayerName.Font = new System.Drawing.Font("Microsoft YaHei", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtPlayerName.Location = new System.Drawing.Point(307, 33);
 			this.txtPlayerName.Margin = new System.Windows.Forms.Padding(4);
+			this.txtPlayerName.MaxLength = 15;
 			this.txtPlayerName.Name = "txtPlayerName";
-			this.txtPlayerName.Size = new System.Drawing.Size(200, 25);
+			this.txtPlayerName.Size = new System.Drawing.Size(200, 43);
 			this.txtPlayerName.TabIndex = 4;
 			this.txtPlayerName.Text = "CrazyPants";
 			this.txtPlayerName.TextChanged += new System.EventHandler(this.txtPlayerName_TextChanged);
 			// 
 			// SignInButton
 			// 
-			this.SignInButton.Location = new System.Drawing.Point(103, 51);
+			this.SignInButton.Location = new System.Drawing.Point(307, 77);
 			this.SignInButton.Margin = new System.Windows.Forms.Padding(4);
 			this.SignInButton.Name = "SignInButton";
 			this.SignInButton.Size = new System.Drawing.Size(200, 34);
@@ -240,6 +229,7 @@
 			// 
 			// pnlLoading
 			// 
+			this.pnlLoading.Controls.Add(this.pictureBox1);
 			this.pnlLoading.Controls.Add(this.label1);
 			this.pnlLoading.Controls.Add(this.lblProgressbar);
 			this.pnlLoading.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -272,33 +262,62 @@
 			this.lblProgressbar.TabIndex = 2;
 			this.lblProgressbar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
+			// pictureBox3
+			// 
+			this.pictureBox3.Image = global::WinFormsClient.Properties.Resources.table;
+			this.pictureBox3.Location = new System.Drawing.Point(166, 19);
+			this.pictureBox3.Name = "pictureBox3";
+			this.pictureBox3.Size = new System.Drawing.Size(134, 61);
+			this.pictureBox3.TabIndex = 9;
+			this.pictureBox3.TabStop = false;
+			// 
+			// pictureBox2
+			// 
+			this.pictureBox2.Image = global::WinFormsClient.Properties.Resources.playername;
+			this.pictureBox2.Location = new System.Drawing.Point(33, 24);
+			this.pictureBox2.Name = "pictureBox2";
+			this.pictureBox2.Size = new System.Drawing.Size(267, 61);
+			this.pictureBox2.TabIndex = 7;
+			this.pictureBox2.TabStop = false;
+			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Image = global::WinFormsClient.Properties.Resources._1481172775_435533;
+			this.pictureBox1.Location = new System.Drawing.Point(262, 112);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(420, 111);
+			this.pictureBox1.TabIndex = 3;
+			this.pictureBox1.TabStop = false;
+			// 
 			// FrmMain
 			// 
 			this.AcceptButton = this.SignInButton;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(944, 555);
+			this.Controls.Add(this.pnlSignin);
 			this.Controls.Add(this.pnlBattleField);
 			this.Controls.Add(this.pnlLoading);
-			this.Controls.Add(this.pnlSignin);
 			this.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Margin = new System.Windows.Forms.Padding(4);
 			this.MaximizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(300, 300);
 			this.Name = "FrmMain";
-			this.Text = "Battle Field";
+			this.Text = "Peek Plane";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WinFormsClient_FormClosing);
 			this.Shown += new System.EventHandler(this.FrmMain_Shown);
 			this.pnlSignin.ResumeLayout(false);
 			this.pnlChooseTableArea.ResumeLayout(false);
-			this.pnlChooseTableArea.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numTableId)).EndInit();
 			this.pnlPlayerNameArea.ResumeLayout(false);
 			this.pnlPlayerNameArea.PerformLayout();
 			this.pnlBattleField.ResumeLayout(false);
 			this.pnlBattleField.PerformLayout();
 			this.pnlLoading.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 
         }
@@ -306,7 +325,6 @@
         #endregion
 
 		private System.Windows.Forms.Panel pnlSignin;
-        private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Button SignInButton;
 		private System.Windows.Forms.TextBox txtPlayerName;
 		private System.Windows.Forms.Panel pnlAreaMine;
@@ -315,7 +333,6 @@
 		private System.Windows.Forms.Panel pnlLoading;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.NumericUpDown numTableId;
-		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label lblProgressbar;
 		private System.Windows.Forms.Button btnGo;
 		private System.Windows.Forms.Panel pnlPlayerNameArea;
@@ -325,6 +342,9 @@
 		private System.Windows.Forms.Label lblEnemyName;
 		private System.Windows.Forms.Label lblMyName;
 		private System.Windows.Forms.Label lblGameover;
+		private System.Windows.Forms.PictureBox pictureBox1;
+		private System.Windows.Forms.PictureBox pictureBox2;
+		private System.Windows.Forms.PictureBox pictureBox3;
 
     }
 }
