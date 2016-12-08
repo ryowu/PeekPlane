@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
 			this.pnlSignin = new System.Windows.Forms.Panel();
 			this.pnlChooseTableArea = new System.Windows.Forms.Panel();
 			this.numTableId = new System.Windows.Forms.NumericUpDown();
@@ -36,8 +37,6 @@
 			this.lblLoginResult = new System.Windows.Forms.Label();
 			this.txtPlayerName = new System.Windows.Forms.TextBox();
 			this.SignInButton = new System.Windows.Forms.Button();
-			this.pnlAreaMine = new System.Windows.Forms.Panel();
-			this.pnlBattleAreaEnemy = new System.Windows.Forms.Panel();
 			this.pnlBattleField = new System.Windows.Forms.Panel();
 			this.lblGameover = new System.Windows.Forms.Label();
 			this.lblEnemyName = new System.Windows.Forms.Label();
@@ -46,34 +45,40 @@
 			this.pnlLoading = new System.Windows.Forms.Panel();
 			this.label1 = new System.Windows.Forms.Label();
 			this.lblProgressbar = new System.Windows.Forms.Label();
+			this.pnlAreaMine = new System.Windows.Forms.Panel();
+			this.pnlBattleAreaEnemy = new System.Windows.Forms.Panel();
+			this.picPlaneProgress = new System.Windows.Forms.PictureBox();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.pictureBox3 = new System.Windows.Forms.PictureBox();
 			this.pictureBox2 = new System.Windows.Forms.PictureBox();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.pnlSignin.SuspendLayout();
 			this.pnlChooseTableArea.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numTableId)).BeginInit();
 			this.pnlPlayerNameArea.SuspendLayout();
 			this.pnlBattleField.SuspendLayout();
 			this.pnlLoading.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.picPlaneProgress)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// pnlSignin
 			// 
+			this.pnlSignin.BackColor = System.Drawing.Color.White;
 			this.pnlSignin.Controls.Add(this.pnlChooseTableArea);
 			this.pnlSignin.Controls.Add(this.pnlPlayerNameArea);
 			this.pnlSignin.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.pnlSignin.Location = new System.Drawing.Point(0, 0);
 			this.pnlSignin.Margin = new System.Windows.Forms.Padding(4);
 			this.pnlSignin.Name = "pnlSignin";
-			this.pnlSignin.Size = new System.Drawing.Size(944, 555);
+			this.pnlSignin.Size = new System.Drawing.Size(919, 545);
 			this.pnlSignin.TabIndex = 4;
 			// 
 			// pnlChooseTableArea
 			// 
 			this.pnlChooseTableArea.BackColor = System.Drawing.Color.Cornsilk;
+			this.pnlChooseTableArea.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.pnlChooseTableArea.Controls.Add(this.pictureBox3);
 			this.pnlChooseTableArea.Controls.Add(this.numTableId);
 			this.pnlChooseTableArea.Controls.Add(this.btnGo);
@@ -85,6 +90,7 @@
 			// 
 			// numTableId
 			// 
+			this.numTableId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.numTableId.Font = new System.Drawing.Font("Microsoft YaHei", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.numTableId.Location = new System.Drawing.Point(307, 28);
 			this.numTableId.Name = "numTableId";
@@ -98,17 +104,20 @@
 			// 
 			// btnGo
 			// 
+			this.btnGo.BackColor = System.Drawing.Color.White;
+			this.btnGo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnGo.Location = new System.Drawing.Point(306, 77);
 			this.btnGo.Name = "btnGo";
 			this.btnGo.Size = new System.Drawing.Size(199, 34);
 			this.btnGo.TabIndex = 8;
 			this.btnGo.Text = "GO";
-			this.btnGo.UseVisualStyleBackColor = true;
+			this.btnGo.UseVisualStyleBackColor = false;
 			this.btnGo.Click += new System.EventHandler(this.btnGo_Click);
 			// 
 			// pnlPlayerNameArea
 			// 
 			this.pnlPlayerNameArea.BackColor = System.Drawing.Color.Cornsilk;
+			this.pnlPlayerNameArea.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.pnlPlayerNameArea.Controls.Add(this.pictureBox2);
 			this.pnlPlayerNameArea.Controls.Add(this.lblLoginResult);
 			this.pnlPlayerNameArea.Controls.Add(this.txtPlayerName);
@@ -129,6 +138,7 @@
 			// 
 			// txtPlayerName
 			// 
+			this.txtPlayerName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.txtPlayerName.Font = new System.Drawing.Font("Microsoft YaHei", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtPlayerName.Location = new System.Drawing.Point(307, 33);
 			this.txtPlayerName.Margin = new System.Windows.Forms.Padding(4);
@@ -141,38 +151,20 @@
 			// 
 			// SignInButton
 			// 
-			this.SignInButton.Location = new System.Drawing.Point(307, 77);
+			this.SignInButton.BackColor = System.Drawing.Color.White;
+			this.SignInButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.SignInButton.Location = new System.Drawing.Point(307, 80);
 			this.SignInButton.Margin = new System.Windows.Forms.Padding(4);
 			this.SignInButton.Name = "SignInButton";
 			this.SignInButton.Size = new System.Drawing.Size(200, 34);
 			this.SignInButton.TabIndex = 5;
 			this.SignInButton.Text = "Sign In";
-			this.SignInButton.UseVisualStyleBackColor = true;
+			this.SignInButton.UseVisualStyleBackColor = false;
 			this.SignInButton.Click += new System.EventHandler(this.SignInButton_Click);
-			// 
-			// pnlAreaMine
-			// 
-			this.pnlAreaMine.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pnlAreaMine.Location = new System.Drawing.Point(10, 42);
-			this.pnlAreaMine.Margin = new System.Windows.Forms.Padding(4);
-			this.pnlAreaMine.Name = "pnlAreaMine";
-			this.pnlAreaMine.Size = new System.Drawing.Size(450, 450);
-			this.pnlAreaMine.TabIndex = 70;
-			// 
-			// pnlBattleAreaEnemy
-			// 
-			this.pnlBattleAreaEnemy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pnlBattleAreaEnemy.Enabled = false;
-			this.pnlBattleAreaEnemy.Location = new System.Drawing.Point(471, 42);
-			this.pnlBattleAreaEnemy.Margin = new System.Windows.Forms.Padding(4);
-			this.pnlBattleAreaEnemy.Name = "pnlBattleAreaEnemy";
-			this.pnlBattleAreaEnemy.Size = new System.Drawing.Size(450, 450);
-			this.pnlBattleAreaEnemy.TabIndex = 71;
-			this.pnlBattleAreaEnemy.Visible = false;
 			// 
 			// pnlBattleField
 			// 
-			this.pnlBattleField.BackColor = System.Drawing.SystemColors.Control;
+			this.pnlBattleField.BackColor = System.Drawing.Color.White;
 			this.pnlBattleField.Controls.Add(this.lblGameover);
 			this.pnlBattleField.Controls.Add(this.lblEnemyName);
 			this.pnlBattleField.Controls.Add(this.lblMyName);
@@ -183,16 +175,18 @@
 			this.pnlBattleField.Location = new System.Drawing.Point(0, 0);
 			this.pnlBattleField.Margin = new System.Windows.Forms.Padding(4);
 			this.pnlBattleField.Name = "pnlBattleField";
-			this.pnlBattleField.Size = new System.Drawing.Size(944, 555);
+			this.pnlBattleField.Size = new System.Drawing.Size(919, 545);
 			this.pnlBattleField.TabIndex = 72;
 			// 
 			// lblGameover
 			// 
 			this.lblGameover.AutoSize = true;
+			this.lblGameover.BackColor = System.Drawing.Color.Cornsilk;
+			this.lblGameover.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lblGameover.Font = new System.Drawing.Font("Microsoft YaHei", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblGameover.Location = new System.Drawing.Point(388, 215);
 			this.lblGameover.Name = "lblGameover";
-			this.lblGameover.Size = new System.Drawing.Size(154, 36);
+			this.lblGameover.Size = new System.Drawing.Size(156, 38);
 			this.lblGameover.TabIndex = 74;
 			this.lblGameover.Text = "YOU WIN!";
 			this.lblGameover.Visible = false;
@@ -201,7 +195,7 @@
 			// 
 			this.lblEnemyName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblEnemyName.AutoSize = true;
-			this.lblEnemyName.Location = new System.Drawing.Point(836, 12);
+			this.lblEnemyName.Location = new System.Drawing.Point(811, 12);
 			this.lblEnemyName.Name = "lblEnemyName";
 			this.lblEnemyName.Size = new System.Drawing.Size(85, 19);
 			this.lblEnemyName.TabIndex = 73;
@@ -220,7 +214,7 @@
 			// 
 			// lblTurnText
 			// 
-			this.lblTurnText.Location = new System.Drawing.Point(347, 507);
+			this.lblTurnText.Location = new System.Drawing.Point(344, 497);
 			this.lblTurnText.Name = "lblTurnText";
 			this.lblTurnText.Size = new System.Drawing.Size(230, 26);
 			this.lblTurnText.TabIndex = 72;
@@ -229,6 +223,8 @@
 			// 
 			// pnlLoading
 			// 
+			this.pnlLoading.BackColor = System.Drawing.Color.White;
+			this.pnlLoading.Controls.Add(this.picPlaneProgress);
 			this.pnlLoading.Controls.Add(this.pictureBox1);
 			this.pnlLoading.Controls.Add(this.label1);
 			this.pnlLoading.Controls.Add(this.lblProgressbar);
@@ -236,17 +232,17 @@
 			this.pnlLoading.Location = new System.Drawing.Point(0, 0);
 			this.pnlLoading.Margin = new System.Windows.Forms.Padding(4);
 			this.pnlLoading.Name = "pnlLoading";
-			this.pnlLoading.Size = new System.Drawing.Size(944, 555);
+			this.pnlLoading.Size = new System.Drawing.Size(919, 545);
 			this.pnlLoading.TabIndex = 73;
 			// 
 			// label1
 			// 
 			this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label1.BackColor = System.Drawing.SystemColors.Control;
-			this.label1.Location = new System.Drawing.Point(293, 290);
+			this.label1.BackColor = System.Drawing.Color.Transparent;
+			this.label1.Location = new System.Drawing.Point(293, 285);
 			this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(359, 26);
+			this.label1.Size = new System.Drawing.Size(334, 26);
 			this.label1.TabIndex = 1;
 			this.label1.Text = "Loading...";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -255,12 +251,51 @@
 			// 
 			this.lblProgressbar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblProgressbar.BackColor = System.Drawing.Color.SteelBlue;
-			this.lblProgressbar.Location = new System.Drawing.Point(293, 262);
+			this.lblProgressbar.Location = new System.Drawing.Point(293, 257);
 			this.lblProgressbar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblProgressbar.Name = "lblProgressbar";
-			this.lblProgressbar.Size = new System.Drawing.Size(359, 19);
+			this.lblProgressbar.Size = new System.Drawing.Size(334, 19);
 			this.lblProgressbar.TabIndex = 2;
 			this.lblProgressbar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// pnlAreaMine
+			// 
+			this.pnlAreaMine.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.pnlAreaMine.Location = new System.Drawing.Point(10, 42);
+			this.pnlAreaMine.Margin = new System.Windows.Forms.Padding(4);
+			this.pnlAreaMine.Name = "pnlAreaMine";
+			this.pnlAreaMine.Size = new System.Drawing.Size(440, 440);
+			this.pnlAreaMine.TabIndex = 70;
+			// 
+			// pnlBattleAreaEnemy
+			// 
+			this.pnlBattleAreaEnemy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.pnlBattleAreaEnemy.Enabled = false;
+			this.pnlBattleAreaEnemy.Location = new System.Drawing.Point(471, 42);
+			this.pnlBattleAreaEnemy.Margin = new System.Windows.Forms.Padding(4);
+			this.pnlBattleAreaEnemy.Name = "pnlBattleAreaEnemy";
+			this.pnlBattleAreaEnemy.Size = new System.Drawing.Size(440, 440);
+			this.pnlBattleAreaEnemy.TabIndex = 71;
+			this.pnlBattleAreaEnemy.Visible = false;
+			// 
+			// picPlaneProgress
+			// 
+			this.picPlaneProgress.Image = ((System.Drawing.Image)(resources.GetObject("picPlaneProgress.Image")));
+			this.picPlaneProgress.Location = new System.Drawing.Point(603, 240);
+			this.picPlaneProgress.Name = "picPlaneProgress";
+			this.picPlaneProgress.Size = new System.Drawing.Size(50, 50);
+			this.picPlaneProgress.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+			this.picPlaneProgress.TabIndex = 4;
+			this.picPlaneProgress.TabStop = false;
+			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Image = global::WinFormsClient.Properties.Resources.title;
+			this.pictureBox1.Location = new System.Drawing.Point(259, 112);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(420, 111);
+			this.pictureBox1.TabIndex = 3;
+			this.pictureBox1.TabStop = false;
 			// 
 			// pictureBox3
 			// 
@@ -280,24 +315,15 @@
 			this.pictureBox2.TabIndex = 7;
 			this.pictureBox2.TabStop = false;
 			// 
-			// pictureBox1
-			// 
-			this.pictureBox1.Image = global::WinFormsClient.Properties.Resources._1481172775_435533;
-			this.pictureBox1.Location = new System.Drawing.Point(262, 112);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(420, 111);
-			this.pictureBox1.TabIndex = 3;
-			this.pictureBox1.TabStop = false;
-			// 
 			// FrmMain
 			// 
 			this.AcceptButton = this.SignInButton;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(944, 555);
-			this.Controls.Add(this.pnlSignin);
+			this.ClientSize = new System.Drawing.Size(919, 545);
 			this.Controls.Add(this.pnlBattleField);
 			this.Controls.Add(this.pnlLoading);
+			this.Controls.Add(this.pnlSignin);
 			this.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Margin = new System.Windows.Forms.Padding(4);
@@ -315,9 +341,11 @@
 			this.pnlBattleField.ResumeLayout(false);
 			this.pnlBattleField.PerformLayout();
 			this.pnlLoading.ResumeLayout(false);
+			this.pnlLoading.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.picPlaneProgress)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 
         }
@@ -345,6 +373,7 @@
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.PictureBox pictureBox2;
 		private System.Windows.Forms.PictureBox pictureBox3;
+		private System.Windows.Forms.PictureBox picPlaneProgress;
 
     }
 }

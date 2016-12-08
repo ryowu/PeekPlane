@@ -83,6 +83,7 @@ namespace WinFormsClient
 
 					blockIndex++;
 					lblProgressbar.Width = Convert.ToInt32((double)blockIndex / (double)Consts.BLOCK_COUNT * 350);
+					picPlaneProgress.Left = lblProgressbar.Right;
 					Application.DoEvents();
 					if (blockIndex >= Consts.BLOCK_COUNT) break;
 				}
@@ -255,6 +256,8 @@ namespace WinFormsClient
 					}
 				}
 
+				IfWin();
+
 				lblTurnText.Text = "Your Turn";
 			}));
 		}
@@ -315,7 +318,7 @@ namespace WinFormsClient
 		{
 			ShowPanel(pnlLoading);
 			InitBlocks();
-			Thread.Sleep(1000);
+			Thread.Sleep(500);
 			ShowPanel(pnlSignin);
 		}
 
@@ -347,10 +350,11 @@ namespace WinFormsClient
 				currentBlock.BackColor = Color.Orange;
 			}
 
+			HubProxy.Invoke("TurnEnd", PointToIndex(currentBlock.Pos), tableId);
+
 			//judge win or lose?
 			if (!IfWin())
 			{
-				HubProxy.Invoke("TurnEnd", PointToIndex(currentBlock.Pos), tableId);
 				pnlBattleAreaEnemy.Enabled = false;
 				lblTurnText.Text = "Enemy Turn";
 			}
