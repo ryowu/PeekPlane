@@ -32,5 +32,13 @@ namespace WinFormsClient
 			get { return state; }
 			set { state = value; }
 		}
+
+		private int parentIndex = 0;
+
+		public int ParentIndex
+		{
+			get { return parentIndex; }
+			set { parentIndex = value; }
+		}
 	}
 }

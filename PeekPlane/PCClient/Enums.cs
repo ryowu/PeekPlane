@@ -20,6 +20,6 @@ namespace WinFormsClient
 		Selected,
 		BrokenWithoutTarget,
 		BrokenWithTarget,
-		Preview
+		Preview,
 	}
 }

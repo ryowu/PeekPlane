@@ -31,13 +31,16 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
 			this.pnlSignin = new System.Windows.Forms.Panel();
 			this.pnlChooseTableArea = new System.Windows.Forms.Panel();
+			this.pictureBox3 = new System.Windows.Forms.PictureBox();
 			this.numTableId = new System.Windows.Forms.NumericUpDown();
 			this.btnGo = new System.Windows.Forms.Button();
 			this.pnlPlayerNameArea = new System.Windows.Forms.Panel();
+			this.pictureBox2 = new System.Windows.Forms.PictureBox();
 			this.lblLoginResult = new System.Windows.Forms.Label();
 			this.txtPlayerName = new System.Windows.Forms.TextBox();
 			this.SignInButton = new System.Windows.Forms.Button();
 			this.pnlBattleField = new System.Windows.Forms.Panel();
+			this.btnAgain = new System.Windows.Forms.Button();
 			this.lblGameover = new System.Windows.Forms.Label();
 			this.lblEnemyName = new System.Windows.Forms.Label();
 			this.lblMyName = new System.Windows.Forms.Label();
@@ -45,24 +48,20 @@
 			this.pnlAreaMine = new System.Windows.Forms.Panel();
 			this.pnlBattleAreaEnemy = new System.Windows.Forms.Panel();
 			this.pnlLoading = new System.Windows.Forms.Panel();
-			this.label1 = new System.Windows.Forms.Label();
-			this.lblProgressbar = new System.Windows.Forms.Label();
-			this.btnAgain = new System.Windows.Forms.Button();
-			this.btnGotoHall = new System.Windows.Forms.Button();
 			this.picPlaneProgress = new System.Windows.Forms.PictureBox();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			this.pictureBox3 = new System.Windows.Forms.PictureBox();
-			this.pictureBox2 = new System.Windows.Forms.PictureBox();
+			this.label1 = new System.Windows.Forms.Label();
+			this.lblProgressbar = new System.Windows.Forms.Label();
 			this.pnlSignin.SuspendLayout();
 			this.pnlChooseTableArea.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numTableId)).BeginInit();
 			this.pnlPlayerNameArea.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			this.pnlBattleField.SuspendLayout();
 			this.pnlLoading.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.picPlaneProgress)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// pnlSignin
@@ -89,6 +88,15 @@
 			this.pnlChooseTableArea.Size = new System.Drawing.Size(618, 129);
 			this.pnlChooseTableArea.TabIndex = 10;
 			this.pnlChooseTableArea.Visible = false;
+			// 
+			// pictureBox3
+			// 
+			this.pictureBox3.Image = global::PeekPlane.Properties.Resources.table;
+			this.pictureBox3.Location = new System.Drawing.Point(166, 19);
+			this.pictureBox3.Name = "pictureBox3";
+			this.pictureBox3.Size = new System.Drawing.Size(134, 61);
+			this.pictureBox3.TabIndex = 9;
+			this.pictureBox3.TabStop = false;
 			// 
 			// numTableId
 			// 
@@ -129,6 +137,15 @@
 			this.pnlPlayerNameArea.Size = new System.Drawing.Size(618, 125);
 			this.pnlPlayerNameArea.TabIndex = 9;
 			// 
+			// pictureBox2
+			// 
+			this.pictureBox2.Image = global::PeekPlane.Properties.Resources.playername;
+			this.pictureBox2.Location = new System.Drawing.Point(33, 24);
+			this.pictureBox2.Name = "pictureBox2";
+			this.pictureBox2.Size = new System.Drawing.Size(267, 61);
+			this.pictureBox2.TabIndex = 7;
+			this.pictureBox2.TabStop = false;
+			// 
 			// lblLoginResult
 			// 
 			this.lblLoginResult.AutoSize = true;
@@ -167,7 +184,6 @@
 			// pnlBattleField
 			// 
 			this.pnlBattleField.BackColor = System.Drawing.Color.White;
-			this.pnlBattleField.Controls.Add(this.btnGotoHall);
 			this.pnlBattleField.Controls.Add(this.btnAgain);
 			this.pnlBattleField.Controls.Add(this.lblGameover);
 			this.pnlBattleField.Controls.Add(this.lblEnemyName);
@@ -181,6 +197,17 @@
 			this.pnlBattleField.Name = "pnlBattleField";
 			this.pnlBattleField.Size = new System.Drawing.Size(919, 545);
 			this.pnlBattleField.TabIndex = 72;
+			// 
+			// btnAgain
+			// 
+			this.btnAgain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnAgain.Location = new System.Drawing.Point(619, 489);
+			this.btnAgain.Name = "btnAgain";
+			this.btnAgain.Size = new System.Drawing.Size(99, 44);
+			this.btnAgain.TabIndex = 75;
+			this.btnAgain.Text = "AGAIN";
+			this.btnAgain.UseVisualStyleBackColor = true;
+			this.btnAgain.Click += new System.EventHandler(this.btnAgain_Click);
 			// 
 			// lblGameover
 			// 
@@ -218,11 +245,11 @@
 			// 
 			// lblTurnText
 			// 
-			this.lblTurnText.Location = new System.Drawing.Point(344, 497);
+			this.lblTurnText.Location = new System.Drawing.Point(288, 497);
 			this.lblTurnText.Name = "lblTurnText";
-			this.lblTurnText.Size = new System.Drawing.Size(230, 26);
+			this.lblTurnText.Size = new System.Drawing.Size(339, 26);
 			this.lblTurnText.TabIndex = 72;
-			this.lblTurnText.Text = "Set your plane";
+			this.lblTurnText.Text = "Set your plane, right click change direction";
 			this.lblTurnText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// pnlAreaMine
@@ -259,6 +286,25 @@
 			this.pnlLoading.Size = new System.Drawing.Size(919, 545);
 			this.pnlLoading.TabIndex = 73;
 			// 
+			// picPlaneProgress
+			// 
+			this.picPlaneProgress.Image = ((System.Drawing.Image)(resources.GetObject("picPlaneProgress.Image")));
+			this.picPlaneProgress.Location = new System.Drawing.Point(603, 240);
+			this.picPlaneProgress.Name = "picPlaneProgress";
+			this.picPlaneProgress.Size = new System.Drawing.Size(50, 50);
+			this.picPlaneProgress.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+			this.picPlaneProgress.TabIndex = 4;
+			this.picPlaneProgress.TabStop = false;
+			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Image = global::PeekPlane.Properties.Resources.title;
+			this.pictureBox1.Location = new System.Drawing.Point(259, 112);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(420, 111);
+			this.pictureBox1.TabIndex = 3;
+			this.pictureBox1.TabStop = false;
+			// 
 			// label1
 			// 
 			this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -282,64 +328,6 @@
 			this.lblProgressbar.TabIndex = 2;
 			this.lblProgressbar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// btnAgain
-			// 
-			this.btnAgain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnAgain.Location = new System.Drawing.Point(619, 489);
-			this.btnAgain.Name = "btnAgain";
-			this.btnAgain.Size = new System.Drawing.Size(99, 44);
-			this.btnAgain.TabIndex = 75;
-			this.btnAgain.Text = "AGAIN";
-			this.btnAgain.UseVisualStyleBackColor = true;
-			this.btnAgain.Click += new System.EventHandler(this.btnAgain_Click);
-			// 
-			// btnGotoHall
-			// 
-			this.btnGotoHall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnGotoHall.Location = new System.Drawing.Point(724, 489);
-			this.btnGotoHall.Name = "btnGotoHall";
-			this.btnGotoHall.Size = new System.Drawing.Size(99, 44);
-			this.btnGotoHall.TabIndex = 76;
-			this.btnGotoHall.Text = "GOTO HALL";
-			this.btnGotoHall.UseVisualStyleBackColor = true;
-			// 
-			// picPlaneProgress
-			// 
-			this.picPlaneProgress.Image = ((System.Drawing.Image)(resources.GetObject("picPlaneProgress.Image")));
-			this.picPlaneProgress.Location = new System.Drawing.Point(603, 240);
-			this.picPlaneProgress.Name = "picPlaneProgress";
-			this.picPlaneProgress.Size = new System.Drawing.Size(50, 50);
-			this.picPlaneProgress.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-			this.picPlaneProgress.TabIndex = 4;
-			this.picPlaneProgress.TabStop = false;
-			// 
-			// pictureBox1
-			// 
-			this.pictureBox1.Image = global::PeekPlane.Properties.Resources.title;
-			this.pictureBox1.Location = new System.Drawing.Point(259, 112);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(420, 111);
-			this.pictureBox1.TabIndex = 3;
-			this.pictureBox1.TabStop = false;
-			// 
-			// pictureBox3
-			// 
-			this.pictureBox3.Image = global::PeekPlane.Properties.Resources.table;
-			this.pictureBox3.Location = new System.Drawing.Point(166, 19);
-			this.pictureBox3.Name = "pictureBox3";
-			this.pictureBox3.Size = new System.Drawing.Size(134, 61);
-			this.pictureBox3.TabIndex = 9;
-			this.pictureBox3.TabStop = false;
-			// 
-			// pictureBox2
-			// 
-			this.pictureBox2.Image = global::PeekPlane.Properties.Resources.playername;
-			this.pictureBox2.Location = new System.Drawing.Point(33, 24);
-			this.pictureBox2.Name = "pictureBox2";
-			this.pictureBox2.Size = new System.Drawing.Size(267, 61);
-			this.pictureBox2.TabIndex = 7;
-			this.pictureBox2.TabStop = false;
-			// 
 			// FrmMain
 			// 
 			this.AcceptButton = this.SignInButton;
@@ -361,17 +349,17 @@
 			this.Shown += new System.EventHandler(this.FrmMain_Shown);
 			this.pnlSignin.ResumeLayout(false);
 			this.pnlChooseTableArea.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.numTableId)).EndInit();
 			this.pnlPlayerNameArea.ResumeLayout(false);
 			this.pnlPlayerNameArea.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
 			this.pnlBattleField.ResumeLayout(false);
 			this.pnlBattleField.PerformLayout();
 			this.pnlLoading.ResumeLayout(false);
 			this.pnlLoading.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.picPlaneProgress)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
 			this.ResumeLayout(false);
 
         }
@@ -400,7 +388,6 @@
 		private System.Windows.Forms.PictureBox pictureBox2;
 		private System.Windows.Forms.PictureBox pictureBox3;
 		private System.Windows.Forms.PictureBox picPlaneProgress;
-		private System.Windows.Forms.Button btnGotoHall;
 		private System.Windows.Forms.Button btnAgain;
 
     }

@@ -23,7 +23,7 @@ namespace WinFormsClient
 		/// </summary>
 		private String UserName { get; set; }
 		private IHubProxy HubProxy { get; set; }
-		const string ServerURI = "http://WCNRW186023-5EH:8080/signalr";
+		const string ServerURI = "http://localhost:8080/signalr";
 		private HubConnection Connection { get; set; }
 
 		private bool isValidSelection = false;
@@ -145,12 +145,6 @@ namespace WinFormsClient
 			HubProxy.On<List<int>>("SyncEnemyMap", SyncEnemyMap);
 			HubProxy.On<int>("NotifyTurnEnd", NotifyTurnEnd);
 
-			//Handle incoming event from server: use Invoke to write to console from SignalR's thread
-			//HubProxy.On<string, string>("AddMessage", (name, message) =>
-			//	this.Invoke((Action)(() =>
-			//		//RichTextBoxConsole.AppendText(String.Format("{0}: {1}" + Environment.NewLine, name, message))
-			//	))
-			//);
 			try
 			{
 				await Connection.Start();
@@ -159,8 +153,6 @@ namespace WinFormsClient
 			}
 			catch (HttpRequestException)
 			{
-				//StatusText.Text = "Unable to connect to server: Start server before connecting clients.";
-				//No connection: Don't enable Send button or show chat UI
 				txtPlayerName.Enabled = true;
 				SignInButton.Enabled = true;
 				lblLoginResult.Text = "Login failed";
@@ -203,7 +195,6 @@ namespace WinFormsClient
 				lblGameover.Text = "YOU LOSE!";
 				lblGameover.Visible = true;
 				btnAgain.Visible = true;
-				btnGotoHall.Visible = true;
 				return false;
 			}
 			else if (enemyHP <= 0)
@@ -212,7 +203,6 @@ namespace WinFormsClient
 				lblGameover.Text = "YOU WIN!";
 				lblGameover.Visible = true;
 				btnAgain.Visible = true;
-				btnGotoHall.Visible = true;
 				return true;
 			}
 			return false;
@@ -240,7 +230,6 @@ namespace WinFormsClient
 				lblMyName.Text = txtPlayerName.Text.Trim();
 				plane_count = Consts.PLANE_COUNT;
 				btnAgain.Visible = false;
-				btnGotoHall.Visible = false;
 				ShowPanel(pnlBattleField);
 			}));
 		}
@@ -419,7 +408,6 @@ namespace WinFormsClient
 						}
 					});
 
-
 					if (plane_count == 0)
 					{
 						blocksMine.ForEach((b) =>
@@ -439,7 +427,6 @@ namespace WinFormsClient
 		private void btnAgain_Click(object sender, EventArgs e)
 		{
 			btnAgain.Visible = false;
-			btnGotoHall.Visible = false;
 			lblGameover.Visible = false;
 			lblTurnText.Text = "Set your plane";
 			plane_count = Consts.PLANE_COUNT;
